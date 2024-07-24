@@ -12,20 +12,27 @@ import pickle
 import pandas as pd
 import numpy as np
 import scipy
+import comet_ml
+from comet_ml import Experiment
 import sklearn
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_selection import SelectFromModel
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import recall_score
+
+import os
+from dotenv import load_dotenv
 #import mlflow
 #import xgboost as xgb
-#from prefect import flow, task
+from prefect import flow, task
 
 # 2b: Identify each task that is in the notebook
 # this task comes from the notebook and it reads the data
 
-#@task(retries=3, retry_delay_seconds=2)
+@task(retries=3, retry_delay_seconds=2)
 def read_data(filename: str) -> pd.DataFrame:
     """Read data into DataFrame"""
     df = pd.read_csv(filename)
@@ -34,7 +41,7 @@ def read_data(filename: str) -> pd.DataFrame:
 
     return df
 
-#@task
+@task
 def feature_engineering(df_train:pd.DataFrame):
     #Filling missing values
     df_train['Gender'].fillna(df_train['Gender'].mode()[0], inplace=True)
@@ -70,7 +77,7 @@ def feature_engineering(df_train:pd.DataFrame):
                                                 
 
 
-#@task
+@task
 def feature_selection(df_train: pd.DataFrame):
     """
     First, I specify the model
@@ -88,7 +95,7 @@ def feature_selection(df_train: pd.DataFrame):
     x_train, x_val, y_train, y_val = train_test_split(X,y, test_size=0.3)    
     return x_train, x_val, y_train, y_val
 
-#@task(log_prints=True)
+@task(log_prints=True)
 def train_best_model(
     x_train: pd.DataFrame,
     x_val: pd.DataFrame,
@@ -96,51 +103,47 @@ def train_best_model(
     y_val: pd.DataFrame
 ) -> None:
     """train a model with best hyperparams and write everything out"""
+    load_dotenv()
+    # Access the API key
+    COMET_API_KEY = os.environ.get('COMET_API_KEY')
+    exp = Experiment(
+          api_key = COMET_API_KEY,
+          project_name="loan-eligibility",
+          workspace="beotavalo"
+          )
     model = LogisticRegression()
     model.fit(x_train, y_train)
     y_pred = model.predict(x_val)
-    print(f'The Accuracy of the model is: {accuracy_score(y_val,y_pred)}')
-    print(f'The MSE of the model is : {mean_squared_error(y_val, y_pred)}')
+    parameters = model.get_params()
+    accuracy = accuracy_score(y_val,y_pred)
+    recall = recall_score(y_val, y_pred)
+    MSE = mean_squared_error(y_val, y_pred)
+    matrix = confusion_matrix(y_val,y_pred)
+    print(f'The Accuracy of the model is: {accuracy}')
+    print(f'The MSE of the model is : {MSE}')
+    labels = ["N", "Y"]
+    
+    # Log the parameters and metrics
+    exp.log_parameters(parameters)
+    exp.log_metrics({"accuracy": accuracy, "MSE": MSE, 'recall':recall})
+    
+    # Log the confusion matrix to Comet
+    exp.log_confusion_matrix(matrix=matrix, labels=labels)
 
+    #Log the model
+    from joblib import dump
+    dump(model, "/workspaces/loan-elegibility-prediction/src/models/le_model.pickle")
 
-    """with mlflow.start_run():
-        train = xgb.DMatrix(X_train, label=y_train)
-        valid = xgb.DMatrix(X_val, label=y_val)
+    #Log the model
+    exp.log_model("le_model.pickle", "/workspaces/loan-elegibility-prediction/src/models")
 
-        best_params = {
-            "learning_rate": 0.09585355369315604,
-            "max_depth": 30,
-            "min_child_weight": 1.060597050922164,
-            "objective": "reg:linear",
-            "reg_alpha": 0.018060244040060163,
-            "reg_lambda": 0.011658731377413597,
-            "seed": 42,
-        }
-
-        mlflow.log_params(best_params)
-
-        booster = xgb.train(
-            params=best_params,
-            dtrain=train,
-            num_boost_round=100,
-            evals=[(valid, "validation")],
-            early_stopping_rounds=20,
-        )
-
-        y_pred = booster.predict(valid)
-        rmse = mean_squared_error(y_val, y_pred, squared=False)
-        mlflow.log_metric("rmse", rmse)
-
-        pathlib.Path("models").mkdir(exist_ok=True)
-        with open("models/preprocessor.b", "wb") as f_out:
-            pickle.dump(dv, f_out)
-        mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
-
-        mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")"""
+    #Register the model
+    exp.register_model(model_name="le_model.pickle", version="1.0.4")
+    exp.end()
     return None
 
 
-#@flow
+@flow
 def main_flow(
     train_path: str = "/workspaces/loan-elegibility-prediction/data/raw/loan-train.csv"
 ) -> None:
