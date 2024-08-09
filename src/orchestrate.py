@@ -1,10 +1,8 @@
 # Step 0:  your env must have, MLFlow and Prefect installed
 # Step 1:  Define your goal: The main goal is to convert your Jupyter/Colab notebook into an MLOps workflow.  The output a file named:  orchestrate.py
 # orchestrate.py will be called by Prefect and it will be the artifact that you use to automate your ML training, deploy, etc.
-
 # Step 2: Convert Notebook into a script
 # Start with the needed imports
-
 # 2a
 
 import pathlib

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Eligibility</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loan Eligibility</h1>
+    <form id="myform" method="POST">
+        <div class="form-group">
+            <label for="sl">Select your marital status:</label>
+            <select id="sl" name="sl">
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sw">Select your education level:</label>
+            <select id="sw" name="sw">
+                <option value="highschool">High School</option>
+                <option value="bachelor">Bachelor's Degree</option>
+                <option value="master">Master's Degree</option>
+                <option value="phd">PhD</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pl">Select your credit score range:</label>
+            <select id="pl" name="pl">
+                <option value="300-579">300-579 (Poor)</option>
+                <option value="580-669">580-669 (Fair)</option>
+                <option value="670-739">670-739 (Good)</option>
+                <option value="740-799">740-799 (Very Good)</option>
+                <option value="800-850">800-850 (Exceptional)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pw">Select your income range:</label>
+            <select id="pw" name="pw">
+                <option value="0-25000">$0 - $25,000</option>
+                <option value="25001-50000">$25,001 - $50,000</option>
+                <option value="50001-75000">$50,001 - $75,000</option>
+                <option value="75001-100000">$75,001 - $100,000</option>
+                <option value="100001-150000">$100,001 - $150,000</option>
+                <option value="150001+">$150,001+</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pz">Select your co-applicant income range:</label>
+            <select id="pz" name="pz">
+                <option value="0-25000">$0 - $25,000</option>
+                <option value="25001-50000">$25,001 - $50,000</option>
+                <option value="50001-75000">$50,001 - $75,000</option>
+                <option value="75001-100000">$75,001 - $100,000</option>
+                <option value="100001-150000">$100,001 - $150,000</option>
+                <option value="150001+">$150,001+</option>
+            </select>
+        </div>
+        
+        <button id="predict" type="button">Predict</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        document.getElementById('predict').addEventListener('click', function() {
+            const form = document.getElementById('myform');
+            const formData = new FormData(form);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = 'Eligibility: ' + data.result;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
