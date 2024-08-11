@@ -1,4 +1,4 @@
 /src/deployment/~/.aws/credentials
 /src/.gitignore/.env
-**/.terraform/*
 /src/deployment/.terraform/providers/registry.terraform.io/hashicorp/aws/5.62.0/linux_amd64/terraform-provider-aws_v5.62.0_x5
+**/.terraform/*
