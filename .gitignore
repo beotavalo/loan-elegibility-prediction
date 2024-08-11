@@ -4,3 +4,6 @@
 **/.terraform/*
 **/.terraform/*
 src/deployment/~/.aws/credentials
+..bfg-report/
+bfg-1.14.0.jar
+src/deployment/.gitattributes
