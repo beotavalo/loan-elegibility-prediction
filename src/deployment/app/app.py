@@ -74,7 +74,7 @@ def predict():
     pw = request.form['pw']
     pz = request.form['pz']
     
-    model_path = '/workspaces/loan-elegibility-prediction/src/models/le_model.pickle'
+    model_path = 'le_model.pickle'
     model = load_model(model_path)
     # Process the input data and make predictions using your model
     # Here you need to transform the input data as expected by your model
