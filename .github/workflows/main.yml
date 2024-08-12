@@ -25,4 +25,10 @@ jobs:
   
     - name: Initialize Terraform
       run: terraform init
+    
+    - name: Plan Terraform
+      run: terraform init
+
+    - name: Apply Terraform
+      run: terraform apply
   
