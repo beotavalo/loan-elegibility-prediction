@@ -1,0 +1,51 @@
+.
+├── LICENSE
+├── README.md
+├── data
+│   ├── processed
+│   │   └── train_data.csv
+│   └── raw
+│       ├── loan-test.csv
+│       └── loan-train.csv
+├── directory.txt
+├── images
+│   ├── CICD Actions.jpg
+│   ├── Comet_experiment_traking.jpg
+│   ├── Comet_model_registry.png
+│   ├── EC2 deployment.jpg
+│   ├── Local app.jpg
+│   ├── Local app2.jpg
+│   ├── Prefect_workflow_orquestation.jpg
+│   ├── batch_deployment.jpg
+│   └── images.txt
+├── notebooks
+│   ├── EDA.ipynb
+│   ├── Feature Engineering.ipynb
+│   ├── Feature Selection.ipynb
+│   └── Modeling.ipynb
+└── src
+    ├── deployment
+    │   ├── Dockerfile
+    │   ├── Makefile
+    │   ├── app
+    │   │   ├── app.py
+    │   │   ├── le_model.pickle
+    │   │   └── templates
+    │   │       └── index.html
+    │   ├── main.tf
+    │   ├── nginx.conf
+    │   ├── requirements.txt
+    │   ├── terraform.tfstate
+    │   ├── terraform.tfstate.backup
+    │   └── variables.tf
+    ├── models
+    │   └── le_model.pickle
+    ├── orchestrate.py
+    ├── requirements.txt
+    ├── test
+    ├── test_read.py
+    └── utils
+        ├── __init__.py
+        └── predict_model.py
+
+12 directories, 36 files
