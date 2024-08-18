@@ -1,3 +1,13 @@
+[![Python](https://img.shields.io/badge/python-3.x-brightgreen.svg)](https://www.python.org/)
+[![AWS](https://img.shields.io/badge/AWS-Powered-F08080.svg)](https://aws.amazon.com/)
+[![Docker](https://img.shields.io/badge/docker-compose-blue.svg)](https://www.docker.com/)
+[![Scikit-learn](https://img.shields.io/badge/scikit--learn-v0.24-blue.svg)](https://scikit-learn.org/stable/)
+[![Comet.ml](https://img.shields.io/badge/comet.ml-experiment-blue.svg)](https://www.comet.ml/)
+[![Prefect](https://img.shields.io/badge/Prefect-Workflows-blue.svg)](https://www.prefect.io/)
+[![autopep8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+[![Pylint](https://img.shields.io/badge/Pylint-12.3-blue.svg)](https://www.pylint.org/)
+[![pytest](https://img.shields.io/badge/pytest-6.2-blue.svg)](https://docs.pytest.org/en/stable/)
+
 # Loan Eligibility Prediction
 
 This project is part of the [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) offered by Data Talks Club cohort 2024.
@@ -19,10 +29,19 @@ This project proposes a Machine Learning (ML) model to automate and enhance the 
 -   **Improved Efficiency:** Streamlined loan assessment frees up underwriters' time for more complex cases.
 -   **Enhanced Risk Management:** The model can identify risk factors and predict potential defaults, allowing lenders to make informed decisions.
 
+**Technologies:**
+* **Machine Learning:** Scikit-learn,
+* **Experiment tracking and model registry:** CometML
+* **Cloud Infraestructure:** Docker, Terraform, AWS (EC2 and S3)
+* **Linting and Formatting:** Pylint, Flake8, autopep8
+* **Testing:** Pytest
+* **Automation:** GitHub Actions (CI/CD Pipeline)
+* **Orchestration:** Prefect
+
 **Complete ML Project Process:**
 
 1.  **Data Ingestion:**
-    -   Historical loan application data will be collected, including borrower information, loan details, and approval status.
+    -   Historical loan application data, including borrower information, loan details, and approval status, will be collected.
     -   Data cleaning procedures will ensure data quality and address missing values or inconsistencies.
       
 2.  **[Exploratory Data Analysis](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/notebooks/EDA.ipynb) (EDA):**
