@@ -33,7 +33,7 @@ This project proposes a Machine Learning (ML) model to automate and enhance the 
 -   **Improved Efficiency:** Streamlined loan assessment frees up underwriters' time for more complex cases.
 -   **Enhanced Risk Management:** The model can identify risk factors and predict potential defaults, allowing lenders to make informed decisions.
 
-**Technologies:**
+## Technologies:
 * **Machine Learning:** Scikit-learn
 * **Experiment tracking and model registry:** CometML
 * **Cloud Infraestructure:** Docker, Terraform, AWS (EC2 and S3)
@@ -42,10 +42,11 @@ This project proposes a Machine Learning (ML) model to automate and enhance the 
 * **Automation:** GitHub Actions (CI/CD Pipeline)
 * **Orchestration:** Prefect
 
-**Complete ML Project Process:**
-
+## Complete ML Project Process:
+Let's check the complete ]directory of the project](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/directory.txt).
 1.  **Data Ingestion:**
-    -   Historical loan application data, including borrower information, loan details, and approval status, will be collected.
+    -   The data was extracted form the [Kaggle Loan Elegibility Dataset](https://www.kaggle.com/code/vikasukani/loan-eligibility-prediction-machine-learning/input).
+    -   Let's check the [raw data](https://github.com/beotavalo/loan-elegibility-prediction/tree/main/data/raw)
     -   Data cleaning procedures will ensure data quality and address missing values or inconsistencies.
       
 2.  **[Exploratory Data Analysis](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/notebooks/EDA.ipynb) (EDA):**
