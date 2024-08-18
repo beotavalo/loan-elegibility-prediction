@@ -30,7 +30,7 @@ This project proposes a Machine Learning (ML) model to automate and enhance the 
 -   **Enhanced Risk Management:** The model can identify risk factors and predict potential defaults, allowing lenders to make informed decisions.
 
 **Technologies:**
-* **Machine Learning:** Scikit-learn,
+* **Machine Learning:** Scikit-learn
 * **Experiment tracking and model registry:** CometML
 * **Cloud Infraestructure:** Docker, Terraform, AWS (EC2 and S3)
 * **Linting and Formatting:** Pylint, Flake8, autopep8
