@@ -83,18 +83,45 @@ Let's check the complete ]directory of the project](https://github.com/beotavalo
     ```
 
 6.  **Model registry and Version Control:**
-    -   The chosen model will be versioned and tracked using MLOps tools to monitor performance changes over time.
-    -   This allows for easy rollbacks to previous versions if performance degrades.
+    -   The models was registered and versioned using CometML. 
+    -   Registering and promoting models through various stages is essential for ensuring the quality and reliability of your machine learning solutions.
+      ![Model registry](/images/Model_registry.jpg)
      
 7.  **Model Testing:**
-    -   The final model will be rigorously tested on a separate hold-out set to assess its generalizability and ensure it performs well on unseen data.
-    -   Explainability techniques like SHAP values will be used to understand how the model arrives at its predictions.
+    -   The scripts was assed using pylint and flake8  adn was formatted using autopep8.
+  
+         ![Linting and Formatting](/images/Flake8.jpg)
+      
+    -   The model with the best perfomance was deployed using an Flask application.
+    -   At the beggining was tested on the host machine.
+       
+      ![Local host](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/images/Local%20app2.jpg)
       
 8.  **Model Deployment:**
-    -   The production-ready model will be integrated into the loan application system.
-    -   Real-time predictions can then be generated for new loan applications.
+ -   Once the application was tested locally, the Makefile was created to containerize the app.
+ To build the image:
+```
+Make build
+```
+To push the image to the docker hub repo:
+```
+Make push
+```
+
+To run the image locally or on the cloud:
+```
+Make run
+```
+
+Note: provide docker credentials on the terminal to pull the docker image.
+
+Let's check the image on your docker hub repo:
+ ![Docker hub repo](/images/Dockerhub.jpg)
+
+-  The production-ready model will be integrated into the loan application system.
+-  Real time predictions can then be generated for new loan applications.
       
-9.  **Monitoring and Continuous Improvement:**
+10.  **Monitoring and Continuous Improvement:**
     -   The deployed model's performance will be continuously monitored through key metrics.
     -   Periodic retraining with new data will be conducted to ensure the model stays accurate and adapts to changing market conditions.
 
