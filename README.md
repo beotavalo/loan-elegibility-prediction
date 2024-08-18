@@ -1,12 +1,16 @@
 [![Python](https://img.shields.io/badge/python-3.x-brightgreen.svg)](https://www.python.org/)
-[![AWS](https://img.shields.io/badge/AWS-Powered-F08080.svg)](https://aws.amazon.com/)
-[![Docker](https://img.shields.io/badge/docker-compose-blue.svg)](https://www.docker.com/)
 [![Scikit-learn](https://img.shields.io/badge/scikit--learn-v0.24-blue.svg)](https://scikit-learn.org/stable/)
 [![Comet.ml](https://img.shields.io/badge/comet.ml-experiment-blue.svg)](https://www.comet.ml/)
 [![Prefect](https://img.shields.io/badge/Prefect-Workflows-blue.svg)](https://www.prefect.io/)
 [![autopep8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 [![Pylint](https://img.shields.io/badge/Pylint-12.3-blue.svg)](https://www.pylint.org/)
 [![pytest](https://img.shields.io/badge/pytest-6.2-blue.svg)](https://docs.pytest.org/en/stable/)
+[![AWS](https://img.shields.io/badge/AWS-Powered-F08080.svg)](https://aws.amazon.com/)
+
+[![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/en/3.0.x/)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://docs.github.com/en/actions)
 
 # Loan Eligibility Prediction
 
