@@ -22,7 +22,7 @@ In today's competitive financial landscape, efficient loan approval processes ar
 
 **Traditional Loan Approval Process:**
 
-Currently, loan eligibility decisions are primarily made through human underwriters who assess various borrower data points like income, credit score, employment history, debt-to-income ratio, and collateral. This manual process can be time-consuming, prone to bias, and lack consistency, leading to potential delays and dissatisfied customers. Additionally, it can be challenging to accurately assess the creditworthiness of non-traditional borrowers who may lack extensive credit history.
+Currently, loan eligibility decisions are primarily made through human underwriters who assess various borrower data points like income, credit score, employment history, debt-to-income ratio, and collateral. This manual process can be time-consuming, prone to bias, and lack consistency, leading to potential delays and dissatisfied customers. Additionally, it can be challenging to accurately assess the creditworthiness of non-traditional borrowers who may need a more extensive credit history.
 
 **Machine Learning Approach:**
 
@@ -45,7 +45,7 @@ This project proposes a Machine Learning (ML) model to automate and enhance the 
 ## Complete ML Project Process:
 Let's check the complete ]directory of the project](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/directory.txt).
 1.  **Data Ingestion:**
-    -   The data was extracted form the [Kaggle Loan Elegibility Dataset](https://www.kaggle.com/code/vikasukani/loan-eligibility-prediction-machine-learning/input).
+    - The data was extracted from the [Kaggle Loan Eligibility Dataset](https://www.kaggle.com/code/vikasukani/loan-eligibility-prediction-machine-learning/input).
     -   Let's check the [raw data](https://github.com/beotavalo/loan-elegibility-prediction/tree/main/data/raw)
     -   Data cleaning procedures will ensure data quality and address missing values or inconsistencies.
       
@@ -62,7 +62,15 @@ Let's check the complete ]directory of the project](https://github.com/beotavalo
       
 6.  **[Model Training and Selection](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/notebooks/Modeling.ipynb):**
     -   Various ML algorithms, such as Logistic Regression, Random Forest, or Gradient Boosting, will be trained and evaluated on some of the data.
-    -   Model selection will be based on accuracy, precision, recall, and F1-score metrics.
+    -   Model selection will be based on accuracy, precision, and recall metrics.
+    -   [Prefect](https://www.prefect.io/) orchestrated the workflow with the following [pipeline](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/src/orchestrate.py).
+       
+- [x] Data ingestion
+- [x] Feature engineering
+- [x] Feature selection
+- [x] Training
+- [x] Model registry
+     
       
 7.  **Experiment Tracking and Version Control:**
    - [Comet ML](https://www.comet.com/site/) was used to track the experiment.
@@ -82,23 +90,24 @@ Let's check the complete ]directory of the project](https://github.com/beotavalo
     exp.log_metrics({"accuracy": 0.82, "loss": 0.012})
     ```
 
-6.  **Model registry and Version Control:**
-    -   The models was registered and versioned using CometML. 
+8.  **Model registry and Version Control:**
+    -   The models were registered and versioned using CometML. 
     -   Registering and promoting models through various stages is essential for ensuring the quality and reliability of your machine learning solutions.
       ![Model registry](/images/Model_registry.jpg)
      
-7.  **Model Testing:**
-    -   The scripts was assed using pylint and flake8  adn was formatted using autopep8.
+9.  **Model Testing:**
+    - The scripts were assessed using Pylint and flake8 and were formatted using autopep8.
   
          ![Linting and Formatting](/images/Flake8.jpg)
       
-    -   The model with the best perfomance was deployed using an Flask application.
-    -   At the beggining was tested on the host machine.
+    - The model with the best performance was deployed using a Flask application.
+    -   At the beginning, it was tested on the host machine.
        
       ![Local host](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/images/Local%20app2.jpg)
       
-8.  **Model Deployment:**
+10.  **Model Deployment:**
  -   Once the application was tested locally, the Makefile was created to containerize the app.
+   
  To build the image:
 ```
 Make build
@@ -119,9 +128,9 @@ Let's check the image on your docker hub repo:
  ![Docker hub repo](/images/Dockerhub.jpg)
 
 -  The production-ready model will be integrated into the loan application system.
--  Real time predictions can then be generated for new loan applications.
+-  Real-time predictions can then be generated for new loan applications.
       
-10.  **Monitoring and Continuous Improvement:**
+11.  **Monitoring and Continuous Improvement:**
     -   The deployed model's performance will be continuously monitored through key metrics.
     -   Periodic retraining with new data will be conducted to ensure the model stays accurate and adapts to changing market conditions.
 
