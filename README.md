@@ -57,39 +57,47 @@ Let's check the complete ]directory of the project](https://github.com/beotavalo
     - New features were created based on existing data to improve model performance.
     - Data scaling was applied to ensure all features are on a similar scale.
 
-5.  **[Feature Selection](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/notebooks/Feature%20Selection.ipynb):**
+4.  **[Feature Selection](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/notebooks/Feature%20Selection.ipynb):**
     -   [SelectFromModel](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html) method was applied to select the more relevant features.
       
-6.  **[Model Training and Selection](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/notebooks/Modeling.ipynb):**
+5.  **[Model Training and Selection](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/notebooks/Modeling.ipynb):**
     -   Various ML algorithms, such as Logistic Regression, Random Forest, or Gradient Boosting, will be trained and evaluated on some of the data.
     -   Model selection will be based on accuracy, precision, and recall metrics.
     -   [Prefect](https://www.prefect.io/) orchestrated the workflow with the following [pipeline](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/src/orchestrate.py).
+      Note: Let's provide the API KEY to use Prefect. You can check the [Quickstart guide](https://docs-3.prefect.io/3.0rc/manage/cloud/manage-users/api-keys).
+    ```
+    pip install -U prefect --pre
+    prefect cloud login -k '<my-api-key>'
+    ```
        
-- [x] Data ingestion
-- [x] Feature engineering
-- [x] Feature selection
-- [x] Training
-- [x] Model registry
+    - [x] Data ingestion
+    - [x] Feature engineering
+    - [x] Feature selection
+    - [x] Training
+    - [x] Model registry
       
      ![Prefect orquestation](/images/Prefect_workflow_orquestation.jpg)
       
-7.  **Experiment Tracking and Version Control:**
-   - [Comet ML](https://www.comet.com/site/) was used to track the experiment.
-   - You need to set up an API_KEY to use the package in the project.
-     
-     ![Experiment Tracking](/images/Comet_experiment_traking.jpg)
-     
--  You can check the official [Comet documentation](https://www.comet.com/docs/v2/).
--  It is an example here for you to include in your project.
-     ```shell
-     # Get started in a few lines of code
-    import comet_ml
-    comet_ml.login()
-    exp = comet_ml.Experiment()
-    # Start logging your data with:
-    exp.log_parameters({"batch_size": 128})
-    exp.log_metrics({"accuracy": 0.82, "loss": 0.012})
-    ```
+6.  **Experiment Tracking and Version Control:**
+       - [Comet ML](https://www.comet.com/site/) was used to track the experiment.
+       - You need to set up an API_KEY to use the package in the project.    
+       -  You can check the official [Comet documentation](https://www.comet.com/docs/v2/).
+         
+         ```
+          pip install comet_ml
+          comet login
+        ```
+       -  It is an example here for you to include in your project.
+    
+         ```
+         # Get started in a few lines of code
+         import comet_ml
+         comet_ml.login()
+         exp = comet_ml.Experiment()
+         # Start logging your data with:
+         exp.log_parameters({"batch_size": 128})
+         exp.log_metrics({"accuracy": 0.82, "loss": 0.012})```
+    ![Experiment Tracking](/images/Comet_experiment_traking.jpg)
 
 8.  **Model registry and Version Control:**
     -   The models were registered and versioned using CometML. 
@@ -107,31 +115,65 @@ Let's check the complete ]directory of the project](https://github.com/beotavalo
       ![Local host](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/images/Local%20app2.jpg)
       
 10.  **Model Deployment:**
- -   Once the application was tested locally, the Makefile was created to containerize the app.
+     -   Once the application was tested locally, the Makefile was created to containerize the app.
    
- To build the image:
-```
-Make build
-```
-To push the image to the docker hub repo:
-```
-Make push
-```
+     To build the image:
 
-To run the image locally or on the cloud:
-```
-Make run
-```
+     ```
+     Make build
+     ```
 
-Note: provide docker credentials on the terminal to pull the docker image.
+     To push the image to the docker hub repo:
+     
+     ```
+     Make push
+     ```
+     
+     To run the image locally or on the cloud:
+     
+     ```
+     Make run
+     ```
 
-Let's check the image on your docker hub repo:
- ![Docker hub repo](/images/Dockerhub.jpg)
+     Note: provide docker credentials on the terminal to pull the docker image.
+     Let's check the image on your docker hub repo:
+     ![Docker hub repo](/images/Dockerhub.jpg)
 
--  The production-ready model will be integrated into the loan application system.
--  Real-time predictions can then be generated for new loan applications.
+     - The production-ready model was deployed on AWS infrastructure (EC2 and S3). Using Terraform as IAC to manage computational resources. From the [app directory] (src/deployment), run:
+       ```
+       terraform init
+       terraform plan
+       terraform apply
+       ```
+
+       Executing these commands will perform the following activities:
+       - [x] Provide AWS infrastructure
+       - [x] Enable TCP traffic (HTTP and HTTPS)
+       - [x] Install and enable docker on the EC2 instance
+       - [x] Pull the docker image from my [docker hub repo](https://hub.docker.com/repository/docker/botavalo/flask-app/general)
+       - [x] Run the image on the EC2 instance
+       - [x] Print the public IP address of the Flask app. 
+   
+    
+     -  [GitHub  Actions](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/.github/workflows/main.yml) automates the CI/CD pipeline. The pipeline has the following steps:
+        - [x] Checkout repository
+        - [x] Set up Python
+        - [x] Set up Terraform
+        - [x] Initialize Terraform
+        - [x] Init, plan, and apply terraform tasks.
+        - [x] Print the public IP address of the Flask app.
+              
+     ![Github Actions](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/images/CICD%20Actions.jpg)
+
+     - The Flask app is deployed automatically on the AWS cloud:
+
+     ![AWS Flask](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/images/EC2%20deployment.jpg)
+
+       Note: The app will be available until the Attempt 2 review is completed.
+     
+     [Link Loan Eligibility Flask AWS](http://52.207.233.22/)
       
-11.  **Monitoring and Continuous Improvement:**
+12.  **Monitoring and Continuous Improvement:**
     -   The deployed model's performance will be continuously monitored through key metrics.
     -   Periodic retraining with new data will be conducted to ensure the model stays accurate and adapts to changing market conditions.
 
