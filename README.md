@@ -43,7 +43,7 @@ This project proposes a Machine Learning (ML) model to automate and enhance the 
 * **Orchestration:** Prefect
 
 ## Complete ML Project Process:
-Let's check the complete ]directory of the project](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/directory.txt).
+Let's check the complete [directory of the project](https://github.com/beotavalo/loan-elegibility-prediction/blob/main/directory.txt).
 1.  **Data Ingestion:**
     - The data was extracted from the [Kaggle Loan Eligibility Dataset](https://www.kaggle.com/code/vikasukani/loan-eligibility-prediction-machine-learning/input).
     -   Let's check the [raw data](https://github.com/beotavalo/loan-elegibility-prediction/tree/main/data/raw)
