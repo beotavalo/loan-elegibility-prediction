@@ -70,7 +70,8 @@ Let's check the complete ]directory of the project](https://github.com/beotavalo
 - [x] Feature selection
 - [x] Training
 - [x] Model registry
-     
+      
+     ![Prefect orquestation](/images/Prefect_workflow_orquestation.jpg)
       
 7.  **Experiment Tracking and Version Control:**
    - [Comet ML](https://www.comet.com/site/) was used to track the experiment.
