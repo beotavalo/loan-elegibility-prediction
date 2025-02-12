@@ -14,7 +14,8 @@
 
 # Loan Eligibility Prediction
 
-This project is part of the [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) offered by Data Talks Club cohort 2024.
+This project is my portfolio to demonstrate my knowledge and skills in developing end-to-end ML projects. 
+
 ## Introduction
 In today's competitive financial landscape, efficient loan approval processes are crucial. This project aims to develop and deploy a Machine Learning (ML) model to predict loan eligibility. By leveraging MLOps practices, we will build a robust and automated system for loan assessment. This will enable faster loan decisions, improve customer experience, and optimize risk management for the financial institution.
 
