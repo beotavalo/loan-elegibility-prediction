@@ -172,7 +172,6 @@ Let's check the complete [directory of the project](https://github.com/beotavalo
 
        Note: The app will be available until the Attempt 2 review is completed.
      
-     [Link Loan Eligibility Flask AWS](http://52.207.233.22/)
       
 12.  **Monitoring and Continuous Improvement:**
     -   The deployed model's performance will be continuously monitored through key metrics.
