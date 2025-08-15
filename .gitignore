@@ -7,3 +7,6 @@ src/deployment/~/.aws/credentials
 ..bfg-report/
 bfg-1.14.0.jar
 src/deployment/.gitattributes
+*.env
+src/deployment/awscliv2.zip
+src/deployment/aws
